@@ -9,7 +9,10 @@ from project.server.models import User, BlacklistToken
 
 auth_blueprint = Blueprint('auth', __name__)
 
-
+def process_post_data():
+    post_data_json = request.get_json()
+    # Check if post_data_json main arguments are nested in the body
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
 class RegisterAPI(MethodView):
     """
     User Registration Resource
@@ -17,7 +20,7 @@ class RegisterAPI(MethodView):
 
     def post(self):
         # get the post data
-        post_data = request.get_json()
+        post_data = process_post_data()
         # check if user already exists
         user = User.query.filter_by(email=post_data.get('email')).first()
         if not user:
@@ -57,7 +60,7 @@ class LoginAPI(MethodView):
     """
     def post(self):
         # get the post data
-        post_data = request.get_json()
+        post_data = process_post_data()
         try:
             # fetch the user data
             user = User.query.filter_by(

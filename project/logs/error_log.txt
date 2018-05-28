@@ -1,0 +1,46 @@
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 65, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_json_data
+NameError: global name 'post_json_data' is not defined
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 65, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_json_data
+NameError: global name 'post_json_data' is not defined
