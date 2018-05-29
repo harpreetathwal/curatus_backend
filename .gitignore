@@ -12,3 +12,4 @@ __pycache__
 env.sh
 migrations
 *.idea
+nohup.out
