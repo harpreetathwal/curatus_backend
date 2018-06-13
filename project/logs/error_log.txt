@@ -44,3 +44,1029 @@ Traceback (most recent call last):
   File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
     return post_data_json.get('body') if 'body' in post_data_json else post_json_data
 NameError: global name 'post_json_data' is not defined
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 174, in get
+    return make_response(jsonify(responseObject)), 200
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 332, in _iterencode_list
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <project.server.models.UserPost object at 0x7fb66d0fa990> is not JSON serializable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 174, in get
+    return make_response(jsonify(responseObject)), 200
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 332, in _iterencode_list
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <project.server.models.UserPost object at 0x7fb66d075550> is not JSON serializable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 174, in get
+    return make_response(jsonify(responseObject)), 200
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 332, in _iterencode_list
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <project.server.models.UserPost object at 0x7fb66d088510> is not JSON serializable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 174, in get
+    return make_response(jsonify(responseObject)), 200
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 332, in _iterencode_list
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <project.server.models.UserPost object at 0x7fb66d0758d0> is not JSON serializable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 174, in get
+    return make_response(jsonify(responseObject)), 200
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 332, in _iterencode_list
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <project.server.models.UserPost object at 0x7fb66d09d310> is not JSON serializable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 174, in get
+    return make_response(jsonify(responseObject)), 200
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <project.server.models.UserPost object at 0x7f259a0db5d0> is not JSON serializable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 171, in get
+    'posts': user.posts[0]
+IndexError: list index out of range
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 171, in get
+    'posts': user.posts[0]
+IndexError: list index out of range
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 174, in get
+    return make_response(jsonify(responseObject)), 200
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python2.7/dist-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <project.server.models.UserPost object at 0x7f2599a1fd90> is not JSON serializable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 166, in get
+    for x in len(posts):
+TypeError: 'int' object is not iterable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 166, in get
+    for x in len(posts):
+TypeError: 'int' object is not iterable
+Exception on /auth/feed [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 168, in get
+    user_post['title']=x.title
+AttributeError: 'int' object has no attribute 'title'
+Exception on /auth/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 23, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/register [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 23, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 63, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 63, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 63, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 63, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 63, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 63, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 225, in post
+    p = models.UserPost(title='Bye Bye', body = """ Bomb bomb bomb roseannneeeeeee...... Roxaneee, you dont have to put on the alt-right! Those days are ova you dont have to say any race is wrong or right. """, image = "https://si.wsj.net/public/resources/images/S1-AK715_MUSKME_E_20180523183001.jpg", user_id=1)
+NameError: global name 'models' is not defined
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 227, in post
+    user_post['title']=post_data.get('title')
+AttributeError: 'unicode' object has no attribute 'get'
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 227, in post
+    user_post['title']=post_data.get('title')
+AttributeError: 'unicode' object has no attribute 'get'
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 227, in post
+    user_post['title']=post_data.get('title')
+AttributeError: 'unicode' object has no attribute 'get'
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 240, in post
+    'posts': user_posts
+NameError: global name 'user_posts' is not defined
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 229, in post
+    db.session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/scoping.py", line 157, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 461, in commit
+    self._prepare_impl()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 441, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2137, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2257, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2221, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 389, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 548, in execute
+    uow
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 835, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1393, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 202, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 469, in do_execute
+    cursor.execute(statement, parameters)
+IntegrityError: (psycopg2.IntegrityError) null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (13, null, New title, null, 2018-06-13 09:20:40.822444, t, f, https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x3..., null).
+ [SQL: 'INSERT INTO user_posts (user_id, title, body, link, image, created_on, visibility, delete_flag) VALUES (%(user_id)s, %(title)s, %(body)s, %(link)s, %(image)s, %(created_on)s, %(visibility)s, %(delete_flag)s) RETURNING user_posts.id'] [parameters: {'body': None, 'user_id': None, 'title': u'New title', 'image': u'https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x305/v1.bTsxMjY1Njg4NDtqOzE3NzQxOzEyMDA7MjcwMDs0MDAw', 'visibility': True, 'created_on': datetime.datetime(2018, 6, 13, 9, 20, 40, 822444), 'link': None, 'delete_flag': False}]
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 227, in post
+    p = UserPost(title=post_data.get('title'), body=post_data.get('body'), image=post_data.get('image'),link=post_data.get('link') )
+AttributeError: 'unicode' object has no attribute 'get'
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 229, in post
+    db.session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/scoping.py", line 157, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 461, in commit
+    self._prepare_impl()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 441, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2137, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2257, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2221, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 389, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 548, in execute
+    uow
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 835, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1393, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 202, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 469, in do_execute
+    cursor.execute(statement, parameters)
+IntegrityError: (psycopg2.IntegrityError) null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (14, null, New title, null, 2018-06-13 09:20:58.328452, t, f, https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x3..., null).
+ [SQL: 'INSERT INTO user_posts (user_id, title, body, link, image, created_on, visibility, delete_flag) VALUES (%(user_id)s, %(title)s, %(body)s, %(link)s, %(image)s, %(created_on)s, %(visibility)s, %(delete_flag)s) RETURNING user_posts.id'] [parameters: {'body': None, 'user_id': None, 'title': u'New title', 'image': u'https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x305/v1.bTsxMjY1Njg4NDtqOzE3NzQxOzEyMDA7MjcwMDs0MDAw', 'visibility': True, 'created_on': datetime.datetime(2018, 6, 13, 9, 20, 58, 328452), 'link': None, 'delete_flag': False}]
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 229, in post
+    db.session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/scoping.py", line 157, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 461, in commit
+    self._prepare_impl()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 441, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2137, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2257, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2221, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 389, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 548, in execute
+    uow
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 835, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1393, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 202, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 469, in do_execute
+    cursor.execute(statement, parameters)
+IntegrityError: (psycopg2.IntegrityError) null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (15, null, New title, null, 2018-06-13 09:21:18.378439, t, f, https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x3..., null).
+ [SQL: 'INSERT INTO user_posts (user_id, title, body, link, image, created_on, visibility, delete_flag) VALUES (%(user_id)s, %(title)s, %(body)s, %(link)s, %(image)s, %(created_on)s, %(visibility)s, %(delete_flag)s) RETURNING user_posts.id'] [parameters: {'body': None, 'user_id': None, 'title': u'New title', 'image': u'https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x305/v1.bTsxMjY1Njg4NDtqOzE3NzQxOzEyMDA7MjcwMDs0MDAw', 'visibility': True, 'created_on': datetime.datetime(2018, 6, 13, 9, 21, 18, 378439), 'link': None, 'delete_flag': False}]
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 229, in post
+    db.session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/scoping.py", line 157, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 461, in commit
+    self._prepare_impl()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 441, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2137, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2257, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2221, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 389, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 548, in execute
+    uow
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 835, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1393, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 202, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 469, in do_execute
+    cursor.execute(statement, parameters)
+IntegrityError: (psycopg2.IntegrityError) null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (16, null, New title, null, 2018-06-13 09:22:25.382463, t, f, https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x3..., null).
+ [SQL: 'INSERT INTO user_posts (user_id, title, body, link, image, created_on, visibility, delete_flag) VALUES (%(user_id)s, %(title)s, %(body)s, %(link)s, %(image)s, %(created_on)s, %(visibility)s, %(delete_flag)s) RETURNING user_posts.id'] [parameters: {'body': None, 'user_id': None, 'title': u'New title', 'image': u'https://resizing.flixster.com/yQpKRgjrVnymE-V2owLNNhl8kgs=/206x305/v1.bTsxMjY1Njg4NDtqOzE3NzQxOzEyMDA7MjcwMDs0MDAw', 'visibility': True, 'created_on': datetime.datetime(2018, 6, 13, 9, 22, 25, 382463), 'link': None, 'delete_flag': False}]
+Exception on /auth/post [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 229, in post
+    db.session.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/scoping.py", line 157, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 874, in commit
+    self.transaction.commit()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 461, in commit
+    self._prepare_impl()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 441, in _prepare_impl
+    self.session.flush()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2137, in flush
+    self._flush(objects)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2257, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2221, in _flush
+    flush_context.execute()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 389, in execute
+    rec.execute(self)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/unitofwork.py", line 548, in execute
+    uow
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 181, in save_obj
+    mapper, table, insert)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/persistence.py", line 835, in _emit_insert_statements
+    execute(statement, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 945, in execute
+    return meth(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/elements.py", line 263, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1053, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1189, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1393, in _handle_dbapi_exception
+    exc_info
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 202, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    context)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 469, in do_execute
+    cursor.execute(statement, parameters)
+DataError: (psycopg2.DataError) value too long for type character varying(1000)
+ [SQL: 'INSERT INTO user_posts (user_id, title, body, link, image, created_on, visibility, delete_flag) VALUES (%(user_id)s, %(title)s, %(body)s, %(link)s, %(image)s, %(created_on)s, %(visibility)s, %(delete_flag)s) RETURNING user_posts.id'] [parameters: {'body': None, 'user_id': u'1', 'title': u'Test Post', 'image': u'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKD ... (2566 characters truncated) ... IRx+GlpadJibCRYIoVgjZ42wiOCB8sakLPbYYZ6TcFLOTubAySDpaWilYrwN9HjidlVtoZ+dcXjxU8VDeuAx/XS0tKkF4AbrJKg4nJ5HdzqOp62eEt9Yc9vtabS1lMLYal1mGMu3tnT6WlrMds//Z', 'visibility': True, 'created_on': datetime.datetime(2018, 6, 13, 9, 25, 50, 623775), 'link': None, 'delete_flag': False}]

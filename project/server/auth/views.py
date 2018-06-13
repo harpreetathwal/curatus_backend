@@ -5,7 +5,7 @@ from flask import Blueprint, request, make_response, jsonify
 from flask.views import MethodView
 
 from project.server import bcrypt, db
-from project.server.models import User, BlacklistToken
+from project.server.models import User, BlacklistToken, UserPost
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -136,6 +136,118 @@ class UserAPI(MethodView):
             }
             return make_response(jsonify(responseObject)), 401
 
+# Class to handle loading of blog feeds
+class FeedAPI(MethodView):
+    """
+    User Feed Resource
+    """
+    def get(self):
+        # get the auth token
+        auth_header = request.headers.get('Authorization')
+        if auth_header:
+            try:
+                auth_token = auth_header.split(" ")[1]
+            except IndexError:
+                responseObject = {
+                    'status': 'fail',
+                    'message': 'Bearer token malformed.'
+                }
+                return make_response(jsonify(responseObject)), 401
+        else:
+            auth_token = ''
+        if auth_token:
+            resp = User.decode_auth_token(auth_token)
+            if not isinstance(resp, str):
+                user = User.query.filter_by(id=resp).first()
+                # Only return a reply if the user is a valid user.
+                if user.id is not None:
+                    user_posts = []
+                    posts= user.posts
+                    for x in posts:
+                        user_post ={}
+                        user_post['title']=x.title
+                        user_post['body']=x.body
+                        user_post['image']=x.image
+                        user_post['link']=x.link
+                        user_posts.append(user_post)
+                    responseObject = {
+                        'status': 'success',
+                        'data': {
+                            'user_id': user.id,
+                            'email': user.email,
+                            'admin': user.admin,
+                            'registered_on': user.registered_on,
+                            'posts': user_posts
+                        }
+                    }
+                    return make_response(jsonify(responseObject)), 200
+            responseObject = {
+                'status': 'fail',
+                'message': resp
+            }
+            return make_response(jsonify(responseObject)), 401
+        else:
+            responseObject = {
+                'status': 'fail',
+                'message': 'Provide a valid auth token.'
+            }
+            return make_response(jsonify(responseObject)), 401
+
+
+# Class to handle posting of a blog feed
+class PostAPI(MethodView):
+    """
+    User Post Resource
+    """
+    def post(self):
+        # post the auth token
+        auth_header = request.headers.get('Authorization')
+        if auth_header:
+            try:
+                auth_token = auth_header.split(" ")[1]
+            except IndexError:
+                responseObject = {
+                    'status': 'fail',
+                    'message': 'Bearer token malformed.'
+                }
+                return make_response(jsonify(responseObject)), 401
+        else:
+            auth_token = ''
+        if auth_token:
+            resp = User.decode_auth_token(auth_token)
+            if not isinstance(resp, str):
+                user = User.query.filter_by(id=resp).first()
+                # Only return a reply if the user is a valid user.
+                if user.id is not None:
+                    # get the post data
+                    print(request.get_json())
+                    post_data = process_post_data()
+                    if post_data:
+                        p = UserPost(title='Bye Bye', body = """ Bomb bomb bomb roseannneeeeeee...... Roxaneee, you dont have to put on the alt-right! Those days are ova you dont have to say any race is wrong or right. """, image = "https://si.wsj.net/public/resources/images/S1-AK715_MUSKME_E_20180523183001.jpg", user_id=1)
+                        p = UserPost(title=post_data.get('title'), body=post_data.get('body'), image=post_data.get('image'),link=post_data.get('link') ,user_id=post_data.get('user_id') )
+                        db.session.add(p)
+                        db.session.commit()
+                        responseObject = {
+                            'status': 'success',
+                            'data': {
+                                'user_id': user.id,
+                                'email': user.email,
+                                'admin': user.admin,
+                                'registered_on': user.registered_on,
+                            }
+                        }
+                        return make_response(jsonify(responseObject)), 200
+            responseObject = {
+                'status': 'fail',
+                'message': resp
+            }
+            return make_response(jsonify(responseObject)), 401
+        else:
+            responseObject = {
+                'status': 'fail',
+                'message': 'Provide a valid auth token.'
+            }
+            return make_response(jsonify(responseObject)), 401
 
 class LogoutAPI(MethodView):
     """
@@ -186,6 +298,8 @@ registration_view = RegisterAPI.as_view('register_api')
 login_view = LoginAPI.as_view('login_api')
 user_view = UserAPI.as_view('user_api')
 logout_view = LogoutAPI.as_view('logout_api')
+feed_view = FeedAPI.as_view('feed_api')
+post_view = PostAPI.as_view('post_api')
 
 # add Rules for API Endpoints
 auth_blueprint.add_url_rule(
@@ -204,7 +318,17 @@ auth_blueprint.add_url_rule(
     methods=['GET']
 )
 auth_blueprint.add_url_rule(
+    '/auth/feed',
+    view_func=feed_view,
+    methods=['GET']
+)
+auth_blueprint.add_url_rule(
     '/auth/logout',
     view_func=logout_view,
+    methods=['POST']
+)
+auth_blueprint.add_url_rule(
+    '/auth/post',
+    view_func=post_view,
     methods=['POST']
 )

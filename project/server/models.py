@@ -15,8 +15,9 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
+    posts = db.relationship('UserPost', backref='user')
 
-    def __init__(self, email, password, admin=False):
+    def __init__(self, email, password, admin=False, **kwargs):
         self.email = email
         self.password = bcrypt.generate_password_hash(
             password, app.config.get('BCRYPT_LOG_ROUNDS')
@@ -88,3 +89,30 @@ class BlacklistToken(db.Model):
             return True
         else:
             return False
+
+
+class UserPost(db.Model):
+    """ User Post Model for storing posts made by users """
+    __tablename__ = "user_posts"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    title = db.Column(db.String(255), unique=False, nullable=False)
+    body = db.Column(db.String(2000), nullable=True)
+    link = db.Column(db.String(1000), nullable=True)
+    image = db.Column(db.String(1000), nullable=True)
+    created_on = db.Column(db.DateTime, nullable=False, index=True)
+    visibility = db.Column(db.Boolean, nullable=False, default=True)
+    delete_flag = db.Column(db.Boolean, nullable=False, default=False)
+
+    def __init__(self, title = "Empty Post Title", body="empty post body", link="", image="", visibility=True, delete_flag=False, user_id=None, **kwargs):
+        self.user_id = user_id
+        self.title = title
+        self.body = body
+        self.link = link
+        self.image = image
+        self.created_on = datetime.datetime.now()
+        self.visibility = visibility
+        self.delete_flag = delete_flag
+
+
