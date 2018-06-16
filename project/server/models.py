@@ -128,7 +128,7 @@ class Bill(db.Model):
     line_name = db.Column(db.String(250), nullable=True)
     line_notes = db.Column(db.String(1000), nullable=True)
     line_amount = db.Column(db.Numeric(15,2), unique=False, nullable=False)
-    allocation_array = db.Column(db.ARRAY(db.Numeric(10,2)), nullable=False)
+    allocation_array = db.Column(db.ARRAY(db.Float), nullable=False)
     created_on = db.Column(db.DateTime, nullable=False, index=True)
     sent_to_ledger_flag = db.Column(db.Boolean, nullable=False, default=False)
 
@@ -151,7 +151,7 @@ class Model(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     model_name = db.Column(db.String(250), unique=False, nullable=False)
-    allocation_array = db.Column(db.ARRAY(db.Numeric(10,2)), nullable=False)
+    allocation_array = db.Column(db.ARRAY(db.Float), nullable=False)
     created_on = db.Column(db.DateTime, nullable=False, index=True)
 
     def __init__(self, model_name = "", allocation_array = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1], **kwargs):

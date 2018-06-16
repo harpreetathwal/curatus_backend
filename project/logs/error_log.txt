@@ -1116,3 +1116,391 @@ Traceback (most recent call last):
   File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
     return post_data_json.get('body') if 'body' in post_data_json else post_data_json
 TypeError: argument of type 'NoneType' is not iterable
+Exception on /bills/names/load [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 117, in get
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: AttributeError("'Bill' object has no attribute 'name'",) is not JSON serializable
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 148, in dispatch_request
+    assert meth is not None, 'Unimplemented method %r' % request.method
+AssertionError: Unimplemented method 'POST'
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 148, in dispatch_request
+    assert meth is not None, 'Unimplemented method %r' % request.method
+AssertionError: Unimplemented method 'POST'
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 148, in dispatch_request
+    assert meth is not None, 'Unimplemented method %r' % request.method
+AssertionError: Unimplemented method 'POST'
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 148, in dispatch_request
+    assert meth is not None, 'Unimplemented method %r' % request.method
+AssertionError: Unimplemented method 'POST'
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 76, in post
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: NameError("global name 'console' is not defined",) is not JSON serializable
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 76, in post
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: NameError("global name 'total' is not defined",) is not JSON serializable
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 76, in post
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: NameError("global name 'responsObject' is not defined",) is not JSON serializable
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 76, in post
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: TypeError("Decimal('0.10') is not JSON serializable",) is not JSON serializable
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 76, in post
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: NameError("global name 'mode' is not defined",) is not JSON serializable
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 76, in post
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: NameError("global name 'mode' is not defined",) is not JSON serializable
+Exception on /models/load [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 76, in post
+    return make_response(jsonify(responseObject)), 401
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 263, in jsonify
+    (dumps(data, indent=indent, separators=separators), '\n'),
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 123, in dumps
+    rv = _json.dumps(obj, **kwargs)
+  File "/usr/lib/python2.7/json/__init__.py", line 251, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/usr/lib/python2.7/json/encoder.py", line 209, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python2.7/json/encoder.py", line 434, in _iterencode
+    for chunk in _iterencode_dict(o, _current_indent_level):
+  File "/usr/lib/python2.7/json/encoder.py", line 408, in _iterencode_dict
+    for chunk in chunks:
+  File "/usr/lib/python2.7/json/encoder.py", line 442, in _iterencode
+    o = _default(o)
+  File "/home/ubuntu/curatus_backend/venv/local/lib/python2.7/site-packages/flask/json.py", line 80, in default
+    return _json.JSONEncoder.default(self, o)
+  File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: NameError("global name 'mode' is not defined",) is not JSON serializable
