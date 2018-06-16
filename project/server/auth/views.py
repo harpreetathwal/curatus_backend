@@ -5,7 +5,9 @@ from flask import Blueprint, request, make_response, jsonify
 from flask.views import MethodView
 
 from project.server import bcrypt, db
-from project.server.models import User, BlacklistToken, UserPost
+from project.server.models import User, BlacklistToken, UserPost, Bill, Model
+
+import datetime
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -13,6 +15,7 @@ def process_post_data():
     post_data_json = request.get_json()
     # Check if post_data_json main arguments are nested in the body
     return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+
 class RegisterAPI(MethodView):
     """
     User Registration Resource
@@ -52,6 +55,86 @@ class RegisterAPI(MethodView):
                 'message': 'User already exists. Please Log in.',
             }
             return make_response(jsonify(responseObject)), 202
+
+class BillAPI(MethodView):
+    """
+    Post a Bill
+    """
+
+    def post(self):
+        # get the post data
+        post_data = process_post_data()
+        # check if user already exists
+	bill_name = "Test1"
+        try:
+            bill_name = post_data.get('bill_name')
+            bill_date = post_data.get('bill_date')
+            bill_amount = post_data.get('bill_amount')
+            line_number = post_data.get('line_number')
+            line_name = post_data.get('line_name')
+            line_notes = post_data.get('line_notes')
+            line_amount = post_data.get('line_amount')
+            allocation_array = post_data.get('allocation_array')
+            sent_to_ledger_flag = False
+            bill = Bill(
+                bill_name = bill_name,
+                bill_date = bill_date,
+                bill_amount = bill_amount,
+                line_number=line_number,
+                line_name=line_name,
+                line_notes = line_notes,
+                line_amount = line_amount,
+                allocation_array = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+                sent_to_ledger_flag=False                
+            )
+            # insert the user
+            db.session.add(bill)
+            db.session.commit()
+            # generate the auth token
+            responseObject = {
+                'status': 'success',
+                'message': 'Successfully added new Bill.' + str(bill_name),
+            }
+            return make_response(jsonify(responseObject)), 201
+        except Exception as e:
+            responseObject = {
+                'status': 'fail',
+                'message': 'Unexpected error ' + str(e) + '. Please try again.'
+            }
+            return make_response(jsonify(responseObject)), 401
+
+
+
+class ModelAPI(MethodView):
+    """
+    Save a Model for future billing
+    """
+
+    def post(self):
+        # get the post data
+        post_data = process_post_data()
+       
+        try:
+            model = Model(
+                model_name = "",
+                allocation_array = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1]
+            )
+            # insert the user   
+            db.session.add(model)
+            db.session.commit()
+            # generate the auth token
+            responseObject = {
+                'status': 'success',
+                'message': 'Successfully added new Model.' + str(model),
+            }
+            return make_response(jsonify(responseObject)), 201
+        except Exception as e:
+            responseObject = {
+                'status': 'fail',
+                'message': 'Unexpected error ' + str(e) + '. Please try again.'
+            }
+            return make_response(jsonify(responseObject)), 401
+
 
 
 class LoginAPI(MethodView):
@@ -300,6 +383,8 @@ user_view = UserAPI.as_view('user_api')
 logout_view = LogoutAPI.as_view('logout_api')
 feed_view = FeedAPI.as_view('feed_api')
 post_view = PostAPI.as_view('post_api')
+bill_view = BillAPI.as_view('bill_api')
+model_view = ModelAPI.as_view('model_api')
 
 # add Rules for API Endpoints
 auth_blueprint.add_url_rule(
@@ -330,5 +415,15 @@ auth_blueprint.add_url_rule(
 auth_blueprint.add_url_rule(
     '/auth/post',
     view_func=post_view,
+    methods=['POST']
+)
+auth_blueprint.add_url_rule(
+    '/bills',
+    view_func=bill_view,
+    methods=['POST']
+)
+auth_blueprint.add_url_rule(
+    '/models',
+    view_func=model_view,
     methods=['POST']
 )

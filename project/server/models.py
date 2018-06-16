@@ -116,3 +116,45 @@ class UserPost(db.Model):
         self.delete_flag = delete_flag
 
 
+class Bill(db.Model):
+    """ Billing table for storing line item allocated bills """
+    __tablename__ = "bills"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    bill_name = db.Column(db.String(250), unique=False, nullable=False)
+    bill_date = db.Column(db.Date, nullable=False, index=True)
+    bill_amount = db.Column(db.Numeric(15,2), unique=False, nullable=False)
+    line_number = db.Column(db.Integer, nullable=False)
+    line_name = db.Column(db.String(250), nullable=True)
+    line_notes = db.Column(db.String(1000), nullable=True)
+    line_amount = db.Column(db.Numeric(15,2), unique=False, nullable=False)
+    allocation_array = db.Column(db.ARRAY(db.Numeric(10,2)), nullable=False)
+    created_on = db.Column(db.DateTime, nullable=False, index=True)
+    sent_to_ledger_flag = db.Column(db.Boolean, nullable=False, default=False)
+
+    def __init__(self, bill_name = "", bill_date = datetime.date.today(), bill_amount = 0.0, line_number=0, line_name="", line_notes = "", line_amount = 0.0,  allocation_array = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1], sent_to_ledger_flag=False, **kwargs):
+        self.bill_name = bill_name
+        self.bill_date = bill_date
+        self.bill_amount = bill_amount
+	self.line_number = line_number
+	self.line_name = line_name
+	self.line_notes = line_notes
+	self.line_amount = line_amount
+        self.created_on = datetime.datetime.now()
+	self.allocation_array = allocation_array
+        self.sent_to_ledger_flag = sent_to_ledger_flag
+
+
+class Model(db.Model):
+    """ Model table for storing models of cost allocation """
+    __tablename__ = "models"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    model_name = db.Column(db.String(250), unique=False, nullable=False)
+    allocation_array = db.Column(db.ARRAY(db.Numeric(10,2)), nullable=False)
+    created_on = db.Column(db.DateTime, nullable=False, index=True)
+
+    def __init__(self, model_name = "", allocation_array = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1], **kwargs):
+        self.model_name = model_name
+        self.allocation_array = allocation_array
+        self.created_on = datetime.datetime.now()

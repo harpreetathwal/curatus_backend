@@ -1070,3 +1070,49 @@ Traceback (most recent call last):
     cursor.execute(statement, parameters)
 DataError: (psycopg2.DataError) value too long for type character varying(1000)
  [SQL: 'INSERT INTO user_posts (user_id, title, body, link, image, created_on, visibility, delete_flag) VALUES (%(user_id)s, %(title)s, %(body)s, %(link)s, %(image)s, %(created_on)s, %(visibility)s, %(delete_flag)s) RETURNING user_posts.id'] [parameters: {'body': None, 'user_id': u'1', 'title': u'Test Post', 'image': u'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKD ... (2566 characters truncated) ... IRx+GlpadJibCRYIoVgjZ42wiOCB8sakLPbYYZ6TcFLOTubAySDpaWilYrwN9HjidlVtoZ+dcXjxU8VDeuAx/XS0tKkF4AbrJKg4nJ5HdzqOp62eEt9Yc9vtabS1lMLYal1mGMu3tnT6WlrMds//Z', 'visibility': True, 'created_on': datetime.datetime(2018, 6, 13, 9, 25, 50, 623775), 'link': None, 'delete_flag': False}]
+Exception on /models [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 101, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
+Exception on /models [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/flask/views.py", line 149, in dispatch_request
+    return meth(*args, **kwargs)
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 101, in post
+    post_data = process_post_data()
+  File "/home/ubuntu/curatus_backend/project/server/auth/views.py", line 15, in process_post_data
+    return post_data_json.get('body') if 'body' in post_data_json else post_data_json
+TypeError: argument of type 'NoneType' is not iterable
