@@ -3,6 +3,7 @@ env
 venv
 temp
 tmp
+uploads
 __pycache__
 
 *.pyc
