@@ -1,0 +1,6 @@
+The raw output from tesseract with no processing is:
+
+-----------------BEGIN-----------------
+Noisy image
+to test
+Tesseract OCR------------------END------------------

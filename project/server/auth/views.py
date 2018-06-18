@@ -7,7 +7,7 @@ from flask.views import MethodView
 from project.server import bcrypt, db
 from project.server.models import User, BlacklistToken, UserPost, Bill, Model
 
-import datetime
+import datetime,decimal
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -62,12 +62,35 @@ class ModelLoaderAPI(MethodView):
     """
     def get(self):
         try:
-            print("dasda/n/n\n\nsdfadfsa")
             models = Model.query.all()
             responseObject={'models':{}}
             for model in models:
                 responseObject['models'][model.model_name]=model.allocation_array
             return make_response(jsonify(responseObject)), 200
+        except Exception as e:
+             responseObject = {
+                 'status': 'fail',
+                 'message': str(e)
+             }
+             return make_response(jsonify(responseObject)), 401
+
+
+
+class BillDetailsLoaderAPI(MethodView):
+    """
+    Load Bill Details To View
+    """
+    def post(self):
+        try:
+            post_data = process_post_data()
+            created_on = db.session.query(Bill).filter_by(bill_name=post_data.get('bill_name')).order_by(Bill.created_on.desc()).first().created_on
+            bill_timestamp_id = db.session.query(Bill).filter_by(bill_name=post_data.get('bill_name')).order_by(Bill.bill_timestamp_id.desc()).first().bill_timestamp_id
+            #bills = Bill.query.filter_by(bill_name=post_data.get('bill_name')).all()
+            bills = Bill.query.filter_by(bill_name=post_data.get('bill_name')).filter_by(bill_timestamp_id=bill_timestamp_id).all()
+            lineItems = []
+            for line in bills:
+                lineItems.append({'bill_name' : line.bill_name, 'bill_date' : line.bill_date, 'bill_amount' : float(line.bill_amount), 'line_name' : line.line_name, 'line_amount' : float(line.line_amount), 'line_number' : line.line_number, 'line_notes' : line.line_notes,'bill_timestamp_id': line.bill_timestamp_id})
+            return make_response(jsonify({'lineItems': lineItems})), 200
         except Exception as e:
              responseObject = {
                  'status': 'fail',
@@ -83,13 +106,17 @@ class BillLoaderAPI(MethodView):
     def post(self):
         try:
             post_data = process_post_data()
-            bills = Bill.query.filter_by(bill_name=post_data.get('bill_name'))
+            bills = Bill.query.filter_by(bill_name=post_data.get('bill_name')).all()
             total = 0.0
-            entity_totals = [0,0,0,0,0,0,0,0,0,0]
+            entity_totals = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
             for line in bills:
+                print(line.allocation_array)
                 for i,entity_mass in enumerate(line.allocation_array):
-                    entity_totals[i]+=entity_mass*line.line_amount
-                total+=line.line_amount
+                    if entity_mass:
+                        entity_totals[i]+=float(entity_mass)*float(line.line_amount)
+                total+=float(line.line_amount)
+                print("total: " + str(total))
+                print("entity_totals: " + str(entity_totals))
             return make_response(jsonify({'total':total, 'entity_totals':entity_totals})), 200
         except Exception as e:
              responseObject = {
@@ -188,6 +215,7 @@ class BillAPI(MethodView):
         try:
             bill_name = post_data.get('bill_name')
             bill_date = post_data.get('bill_date')
+            bill_timestamp_id = post_data.get('bill_timestamp_id')
             bill_amount = post_data.get('bill_amount')
             line_number = post_data.get('line_number')
             line_name = post_data.get('line_name')
@@ -198,12 +226,13 @@ class BillAPI(MethodView):
             bill = Bill(
                 bill_name = bill_name,
                 bill_date = bill_date,
+                bill_timestamp_id = bill_timestamp_id,
                 bill_amount = bill_amount,
                 line_number=line_number,
                 line_name=line_name,
                 line_notes = line_notes,
                 line_amount = line_amount,
-                allocation_array = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],
+                allocation_array = allocation_array,
                 sent_to_ledger_flag=False                
             )
             # insert the user
@@ -505,6 +534,7 @@ post_view = PostAPI.as_view('post_api')
 bill_view = BillAPI.as_view('bill_api')
 model_view = ModelAPI.as_view('model_api')
 bill_loader_view = BillLoaderAPI.as_view('bill_loader_api')
+bill_details_loader_view = BillDetailsLoaderAPI.as_view('bill_details_loader_api')
 bill_name_loader_view = BillNameLoaderAPI.as_view('bill_name_loader_api')
 model_loader_view = ModelLoaderAPI.as_view('model_loader_api')
 
@@ -553,6 +583,11 @@ auth_blueprint.add_url_rule(
     '/bills/names/load',
     view_func=bill_name_loader_view,
     methods=['GET']
+)
+auth_blueprint.add_url_rule(
+    '/bills/details',
+    view_func=bill_details_loader_view,
+    methods=['POST']
 )
 auth_blueprint.add_url_rule(
     '/bills/load',

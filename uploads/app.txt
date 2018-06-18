@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Roivant Accounting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.min.css">
+    <link rel="icon" href="https://media.licdn.com/dms/image/C560BAQGd1N9YMVL4Ag/company-logo_200_200/0?e=2159024400&v=beta&t=uRANJk5Ve03DyW0bY74GYLEMWOD11tYtL0rV1teIc6M" type="image/x-icon" />
+  </head>
+
+  <body >
+    <hr>
+    <img style="display:block; position: relative; margin:auto"  src="http://roivant.com/wp-content/themes/roivant/images/logo@2x.png"/>
+    <hr>
+    <div class="row"style=" margin-left:15px" >
+      <div style="float: right;border-style:solid;border-width: thin;">
+        <label for="file">
+          &nbsp;&nbsp;Choose a Bill Source Document to Upload
+        </label>
+        <div class="large-12 medium-12 small-12 cell" style="border-style:dotted;border-width: thin;">
+
+            <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+
+            <button v-on:click="submitFile()">Submit</button>
+        </div>
+      </div>
+      <h1 class="title" style="display:block; position: relative">New Bill</h1>
+      <p class="subtitle" style="display:block; position: relative; margin:auto">
+        Enter in your line items and select or create an <strong>Allocation Model</strong>!
+      </p>
+    </div>
+    <hr>
+    <div class="columns " id="app" style="margin-left:15px;margin-right:15px;margin-top:10px;margin-bottom:10px">
+      <div class="column col3" style="border-style: inset;">
+        <h1 class="display-1"> Enter Bill Details </h1>
+        <hr>
+          <div style="float: left;">
+            <input type="submit" value="Submit Bill" v-on:click="postBill()">  
+          </div>
+          <div style="float: right;">
+            <input type="button" value="Delete Current Bill" v-on:click="clearPage()">
+          </div>
+        <section class="section">
+          <section class="form">
+            <br>
+            <hr>
+            <div class="field">
+              <label class="label">Bill Name</label>
+              <div class="control">
+                <input v-model="form.bill_name" class="input" type="text" >
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Bill Date</label>
+              <div class="control">
+                <input v-model="form.bill_date" class="input" type="date">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Bill Amount</label>
+              <div class="control">
+                <input v-model.number="form.bill_amount" class="input" type="number" min="0.0" step="0.01" max="1000000" value="0.0">
+              </div>
+            </div>
+          </section>
+          <hr>
+          <section class="form"> 
+            <hr>
+            <div class="field">
+              <label class="label">Line Name</label>
+              <div class="control">
+                <input v-model="form.line_name" class="input" type="text" placeholder="Text input">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Line Amount</label>
+              <div class="control">
+                <input v-model.number="form.line_amount" class="input" type="number" min="0.0" step="0.01" max="1000000" value="0.0">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Line Notes</label>
+              <div class="control">
+                <input v-model="form.line_notes" class="input" type="text" placeholder="Text input">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Allocation Model</label>
+              <div class="control">
+                <!-- <input v-model="form.allocation_array_string" class="input" type="select" placeholder="Text input"> -->
+                <select v-model="allocation_array_string"  id="mySelect" name="cars">
+                  <option disabled value="">Please select one</option>
+                  <option  v-for="(option,i) in models" :value="''+option"  >{{i}}</option>
+                  <option value="[0.1,0.15,0.1,0.1,0.19,0.1,0.1,0.1,0.1,0.1]">Base Even</option>
+                </select>
+              </div>
+            </div>
+        </section>
+        <br>
+        <div >
+          <button v-on:click="addItem">Add Line Item</button>
+        </div>
+      </section>
+    </div>
+    <div class="column col3" style="border-style: inset; ">
+      <h1 class="display-1"> Current Cumulative Allocation </h1>
+      <hr>
+      <h1 class="display-1">  Total Allocated: $ {{accountedCost}}</h1>
+      <h1 class="display-1">  Total Unallocated: $ {{form.bill_amount-accountedCost}}</h1>
+      <div class="row" v-for="(line,i) in lineItems" >
+        <section class="section" id="results">
+          <div class="box">
+            <ul >          
+              <!-- loop through all the `form` properties and show their values -->
+              <li style=" line-height: 0.75;" v-for="(item, k) in line">
+                <font size="1"><strong>{{ k }}:</strong> {{ item }}</font>
+              </li>
+            </ul>
+          </div>
+          <button v-on:click="removeItem(i)" style="position:center">Remove Line Item</button>
+        </section>
+      </div>
+    </div>
+    <div class="column col3" style="border-style: inset; ">
+      <h1 class="display-1"> Line Items </h1>
+      <hr>
+      <img src = "https://media.giphy.com/media/QzMj1f68I5dtK/giphy-downsized-large.gif" style="width:300px;height:75px;" class="center" />
+      <section class="form" style="margin-left:15px;margin-right:15px;"> 
+        <h1> Allocation array {{allocation_array_string}}</h1>
+        <div class="row" v-for="(cost,i) in allocation_array">
+          <div class="field">
+            <label class="label">Entity {{i}}</label>
+            <div class="control">
+              <input  class="input" type="number" min="0.0" step="0.01" max="1000000" v-model.number="allocation_array[i]">
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row" >
+          <label class="label">Allocation Model Name</label>
+          <div class="control" >
+            <input  class="input" v-model="model_name" type="text" >
+          </div>
+        </div>
+        <div class="row" >
+          <div >
+            <input value="Save Model" v-on:click="postModel" type="button" >
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="column col3" style="border-style: inset;">
+      <h1 class="display-1"> Visualize Data </h1>
+      <hr>
+      <div >
+        <label> &nbsp;&nbsp;&nbsp;&nbsp;Compare or edit old Bills </label>
+        <div style="float: left;">
+          <!-- <input v-model="form.allocation_array_string" class="input" type="select" placeholder="Text input"> -->
+          <select v-model="selectedBill"   id="mySelect" name="cars">
+            <option disabled value="">Please select one</option>
+            <option  v-for="(option,i) in bill_names.bill_names" :value="option" :key="i" >{{option}}</option>
+            <option value="Current Bill">Current Bill</option>
+          </select>
+        </div>
+        <div  >
+          <button v-on:click="refreshLists()">Refresh Dropdown Menus</button>
+        </div>
+        <div style=>
+          <input type="button" value="Load Selected Bill" v-on:click="getBillDetails()">
+        </div>
+      </div>
+      <div id="piechart"></div>
+      <hr>
+      <br>
+      <br>
+      <div id="piechartModel"></div>
+      <hr>
+    </div>
+<!-- 
+    <button-counter></button-counter>
+ -->
+  </div>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script type="text/javascript">
+
+
+    // Define a new component called button-counter
+    Vue.component('button-counter', {
+      data: function () {
+        return {
+          count: 0
+        }
+      },
+      template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    })
+
+    var today = new Date();
+    var dateInt = (today.getFullYear()*10000)+(today.getMonth()+1)*100+today.getDate();
+    var dateString = ""+ dateInt
+    var date = dateString.substring(0,4)+'-'+dateString.substring(4,6)+'-'+dateString.substring(6,8)
+    var bill_timestamp_id_text = 'Bill# '+today.getTime() + "_"+ date
+
+    new Vue({
+      el: '#app',
+      data: {
+        form : {
+          bill_timestamp_id: bill_timestamp_id_text,
+          bill_name: bill_timestamp_id_text,
+          bill_date: date,
+          bill_amount: 0,
+          line_name: '',
+          line_amount: 0,
+          line_number: 0,
+          line_notes: ''
+        },
+        allocation_array_string: '[1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]',
+        lineItems: [],
+        allocation_array: [1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+        entityCostsTotal:   [1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+        entityCostsTotalCurrentBill:   [1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+        currentBillModel:   [1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+        model_name: 'Base Even',
+        models : {},
+        selectedBill: 'Current Bill',
+        bill_names: [],
+        accountedCost: 0,
+        file: ''
+      },
+      mounted() {
+        console.log("Open")
+        this.updateCharts();
+      },
+      methods: {
+        submitFile : function(event) {
+          var formData = new FormData();
+          /*
+              Add the form data we need to submit
+          */
+          formData.append('file', this.file);
+
+          axios.post( "http://ec2-52-23-186-226.compute-1.amazonaws.com:5000/",
+          JSON.stringify(formData),
+          {
+            headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+          }
+          ).then(function(response){
+            console.log('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||SUCCESS!!' + JSON.stringify(response));
+          })
+          .catch(function(error){
+            console.log('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||FAILURE!!' + error);
+          });
+        },
+        handleFileUpload: function(event){
+          this.file = this.$refs.file.files[0];
+        },
+        updateModeler: function (event) {
+          var temp = this.$data.allocation_array_string
+          //Parse array from string
+          if (temp.indexOf('[')>-1){var tempArray = temp.substring(1,temp.length-1).split(",")}
+          else {var tempArray = temp.split(",")}
+
+          for(var i=0; i<tempArray.length; i++) { tempArray[i] = parseFloat(tempArray[i]); }
+          this.$data.allocation_array = tempArray
+          console.log("updating modeler") 
+        },
+
+        addItem: function (event) {
+          console.log("allocation_array1")
+          console.log(this.$data.allocation_array)
+          var line = Object.assign({}, this.$data.form, {'allocation_array': this.$data.allocation_array});
+          console.log("allocation_array2")
+          console.log(this.$data.allocation_array)
+          this.$data.lineItems.push(line)
+          this.$data.accountedCost = parseFloat(this.$data.accountedCost) + parseFloat(this.$data.form.line_amount)
+          this.clearLineForm()
+          this.$data.form.line_number += 1
+          this.updateEntityCostsTotal()
+          if (this.$data.selectedBill == "Current Bill"){
+            this.$data.lineItemsCurrent = this.$data.lineItems
+          }
+        },
+
+        updateEntityCostsTotal : function(event) {
+          this.$data.entityCostsTotal = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+          for (var i=0;i<this.$data.lineItems.length;i++){
+            for (var j=0;j<this.$data.allocation_array.length;j++){
+              this.$data.entityCostsTotal[j]+=this.$data.lineItems[i].allocation_array[j]*this.$data.lineItems[i].line_amount
+            }
+          }
+        },
+
+        getModels: function (event) {
+          console.log("Start");
+          this.$http.get('http://ec2-52-23-186-226.compute-1.amazonaws.com:5000/models/load').then(function(response) {
+                // success
+                this.$data.models = response.body.models;
+                console.log("Received Models:")  
+                console.log(JSON.stringify(this.$data.models) )   
+            }, function(response) {
+                // error
+                alert("Error getting Models")
+                console.log(response)
+            });
+          
+        },
+
+        getBills: function (event) {
+          console.log("Start");
+          this.$http.get('http://ec2-52-23-186-226.compute-1.amazonaws.com:5000/bills/names/load').then(function(response) {
+                // success
+                this.$data.bill_names = response.body;
+                console.log("Received Bills:")
+                console.log(this.$data.bill_names)    
+            }, function(response) {
+                // error
+                alert("Error getting Models")
+                console.log(response)
+            });
+          
+        },
+
+        postBill: function (event) {
+          for (var i=0;i<this.$data.lineItems.length;i++){
+           var line = this.$data.lineItems[i]
+           this.$http.post('http://ec2-52-23-186-226.compute-1.amazonaws.com:5000/bills', JSON.stringify(line)).then(function(response) {
+                // success
+                console.log("Success in posting bill")
+                alert("Success in posting bill" + JSON.stringify(line))
+
+            }, function(response) {
+                // error
+                alert("Error posting line " + JSON.stringify(line))
+                console.log(line)
+            });
+          }
+          this.refreshLists()
+        },
+
+        postModel: function (event) {
+          var model = {'model_name': this.$data.model_name, 'allocation_array': this.$data.allocation_array}
+          console.log("Posting model: ")
+          console.log(JSON.stringify(model))
+           this.$http.post('http://ec2-52-23-186-226.compute-1.amazonaws.com:5000/models', JSON.stringify(model)).then(function(response) {
+                // success
+                console.log("Success in posting model")
+                alert("Success in posting model")
+            }, function(response) {
+                // error
+                alert("Error posting model " + model)
+                console.log(response)
+            });
+           this.refreshLists()
+        },
+
+        clearLineForm: function (event) {
+          this.$data.form.line_name = ''
+          console.log(this.$data.form.line_amount)
+          this.$data.form.line_amount = 0 
+          this.$data.form.line_notes = ''
+        },
+
+        clearPage: function (event) {
+          this.$data.form.bill_name= bill_timestamp_id_text,
+          this.$data.form.bill_date=date,
+          this.$data.form.bill_amount=0,
+          this.$data.form.bill_timestamp_id = bill_timestamp_id_text,
+          this.$data.form.line_name= '',
+          this.$data.form.line_amount=0,
+          this.$data.form.line_number=0,
+          this.$data.form.line_notes= '',
+          this.$data.accountedCost= 0,
+          this.$data.lineItems = [],
+          this.$data.entityCostsTotal=  [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+        },
+        updateCharts: function(event) {
+          this.drawPieChart(this.$data.currentBillModel,'piechart',this.$data.selectedBill + ' Total Allocation');
+          this.drawPieChart(this.$data.allocation_array,'piechartModel',' Current Allocation Model');
+          this.refreshLists()
+        },
+        refreshLists : function(event){
+          this.getModels();
+          this.getBills();
+          console.log("Got here")
+        },
+        removeItem: function(i) {
+          this.$data.lineItems.splice(i,1)
+          this.$data.form.line_number -= 1
+          // Correct the numbering in an inefficient way for now
+          this.refreshItemDetails()
+        },
+        refreshItemDetails: function(i) {
+          // Correct the numbering in an inefficient way for now
+          this.$data.accountedCost = 0
+          for (var i=0;i<this.$data.lineItems.length;i++){
+            this.$data.lineItems[i].line_number=i
+            this.$data.lineItems[i].bill_timestamp_id=this.$data.form.bill_timestamp_id
+            this.$data.accountedCost+=this.$data.lineItems[i].line_amount
+          }
+          if (this.$data.selectedBill == "Current Bill"){
+            this.$data.lineItemsCurrent = this.$data.lineItems
+          }
+        },
+        getBillModel: function(event) {
+          console.log("Getting Bill Model");
+          this.$http.post('http://ec2-52-23-186-226.compute-1.amazonaws.com:5000/bills/load', JSON.stringify({'bill_name':this.$data.selectedBill})).then(function(response) {
+                // success
+                this.$data.currentBillModel = response.body.entity_totals;
+                console.log("Received Bills:")
+                console.log(this.$data.entityCostsTotal)
+                
+            }, function(response) {
+                // error
+                alert("Error getting Models")
+                console.log(response)
+            });
+        },
+        getBillDetails: function(event) {
+          console.log("Getting Bill Details");
+          if (this.$data.selectedBill == "Current Bill"){
+            this.$data.lineItems = this.$data.lineItemsCurrent
+            console.log("LoadCurrentBill")
+          }
+          else {
+            console.log("LoadRemoteBill")
+            this.$http.post('http://ec2-52-23-186-226.compute-1.amazonaws.com:5000/bills/details', JSON.stringify({'bill_name':this.$data.selectedBill})).then(function(response) {
+                  // success
+                  this.$data.lineItems = response.body.lineItems;
+                  this.refreshItemDetails()
+                  console.log("Received Bill Details:")
+                  console.log(this.$data.form.bill_date)
+                  this.$data.form.bill_name = this.$data.lineItems[0].bill_name
+                  var d = new Date(""+this.$data.lineItems[0].bill_date)
+                  var dateInt = (d.getFullYear()*10000)+(d.getMonth()+1)*100+d.getDate();
+                  var dateString = ""+ dateInt
+                  var date = dateString.substring(0,4)+'-'+dateString.substring(4,6)+'-'+dateString.substring(6,8)
+                  this.$data.form.bill_date = date
+                  this.$data.form.bill_amount = this.$data.lineItems[0].bill_amount
+                  
+              }, function(response) {
+                  // error
+                  alert("Error getting Models")
+                  console.log(response)
+              });
+          }
+        },
+        drawPieChart : function (amounts, targetElement,title) {
+            // Load google charts
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            var entity_array = [['Entity', 'Cost Allocated']];
+            for (var i = 0; i < amounts.length; i++) {
+              entity_array.push(['Entity '+i, amounts[i]])
+            }
+            console.log(entity_array);
+             // Draw the chart and set the chart values
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable(entity_array);
+
+              // Optional; add a title and set the width and height of the chart
+              var options = {'title':title, 'width':550, 'height':400};
+
+              // Display the chart inside the <div> element with id="piechart"
+              var chart = new google.visualization.PieChart(document.getElementById(targetElement));
+              chart.draw(data, options);
+            }
+          }
+      },
+      watch: {
+        allocation_array: function (event) {
+          console.log("entityCosts updated!")
+          this.updateCharts()
+        },
+        allocation_array_string: function (event) {
+          this.updateModeler()
+          console.log("Overwriting Entity Modeler Costs with Dropdown Model!")
+        },
+        entityCostsTotal: function (event) {
+          if (this.$data.selectedBill == "Current Bill"){
+            this.$data.currentBillModel = this.$data.entityCostsTotal
+          }
+          console.log("Overwriting Entity Total Current Bill Costs with Dropdown Bill Selected!")
+        },
+        currentBillModel: function (event) {
+          this.updateCharts()
+        },
+        selectedBill: function (event){
+          console.log("Selected Bill:")
+          console.log(this.$data.selectedBill)
+          if (this.$data.selectedBill == "Current Bill"){
+            this.$data.currentBillModel = this.$data.entityCostsTotal
+            this.updateCharts()
+          }
+          else {
+           this.$data.currentBillModel = this.getBillModel(this.$data.selectedBill)
+          }
+
+        }
+      }
+    })
+  </script>
+  </body>
+<style>
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+body {  background-size: cover;
+    background-image: url("data:image/jpeg;base64,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");
+}
+.col1 {
+  background-image : url("https://static.vecteezy.com/system/resources/previews/000/097/841/original/polka-dot-pattern-vector.jpg");
+}
+.col2 {
+  background-image : url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7BQLnwY7Ntj4mGop3VeOyV8nFGtfeB_VijJj3SwiSjf_Ahi43CQ");
+}
+.col3 {
+  background-image : url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQzSESrzOpSq7Y5wx-mnkXQTq2ArQb_E21XTGHq1DwgmE3cuaN");
+}
+
+
+.column{
+    background-color: white;
+}
+</style>
+</html>
+
+<!-- ToDo:
+(1) Need to  Bind data for bill model and current cached bill total entity amount array variables
+(2) Make Line Items Clickable and editable
+(3) Confirm best practices for using bill_timestamp_id as a session identifier and bill_name and created_on as unique ids <-> bill_id (internal psql column)
+ -->
